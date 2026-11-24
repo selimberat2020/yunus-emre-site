@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yunus Emre Pide Lahmacun Cantık Salonu | Odunpazarı · Eskişehir</title>
+  <meta name="description" content="Büyükdere, Odunpazarı'nda eski usul odunlu kara fırından çıtır pide, lahmacun ve Bursa usulü cantık. 4,9 Google puanı, meze ikramı ve toplu siparişlerde özel iskonto." />
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: '#FAF6F0',
+            sand: '#F2EAE0',
+            charcoal: '#1C1917',
+            espresso: '#292524',
+            ember: '#C2410C',
+            emberDark: '#9A3412',
+            gold: '#D97706',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Genel kaydırma ve tipografi incelikleri */
+    body {
+      background-color: #FAF6F0;
+      color: #1C1917;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sıcak kara fırın doku hissi */
+    .oven-texture {
+      background-image: radial-gradient(rgba(194, 65, 12, 0.045) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Scroll-Reveal akıcı giriş animasyonları */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Menü geçiş animasyonu */
+    @keyframes menuFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .menu-card-enter {
+      animation: menuFadeIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* İnce yatay sekme kaydırma çubuğunu gizle */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Toplu sipariş kartı hafif kor ışıltısı */
+    .ember-glow {
+      box-shadow: 0 20px 50px -20px rgba(194, 65, 12, 0.35), inset 0 1px 0 0 rgba(217, 119, 6, 0.25);
+    }
+  </style>
+</head>
+<body class="oven-texture selection:bg-ember/20 selection:text-charcoal pb-20 md:pb-0">
+
+  <!-- ==================== 1. STICKY ÜST MENÜ (NAVBAR) ==================== -->
+  <header id="navbar" class="sticky top-0 z-40 w-full bg-parchment/85 backdrop-blur-md border-b border-charcoal/10 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Marka & Kara Fırın Amblemi -->
+      <a href="#top" class="flex items-center gap-2.5 group shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-charcoal text-parchment flex items-center justify-center shadow-sm group-hover:bg-ember transition-colors duration-300">
+          <!-- Minimalist Kara Fırın / Alev SVG İkonu -->
+          <svg class="w-5 h-5 text-gold group-hover:text-parchment transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" />
+          </svg>
+        </div>
+        <div class="leading-tight">
+          <span class="block font-serif font-bold text-lg text-charcoal tracking-tight">Yunus Emre</span>
+          <span class="block text-[11px] font-medium text-charcoal/65 tracking-wide uppercase">Kara Fırın · Odunpazarı</span>
+        </div>
+      </a>
+
+      <!-- Masaüstü Gezinme Bağlantıları -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-charcoal/80">
+        <a href="#menu" class="hover:text-ember transition-colors">Menü</a>
+        <a href="#toplu-siparis" class="hover:text-ember transition-colors">Toplu Sipariş</a>
+        <a href="#yorumlar" class="hover:text-ember transition-colors">Yorumlar</a>
+        <a href="#iletisim" class="hover:text-ember transition-colors">Ulaşım</a>
+      </nav>
+
+      <!-- Sağ Eylem Butonları -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:+905060336660" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-charcoal/85 hover:text-ember hover:bg-sand/70 transition-colors">
+          <svg class="w-4 h-4 text-ember" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Ara
+        </a>
+        <a href="https://wa.me/905060336660?text=Merhaba%2C%20Yunus%20Emre%20Pide%27den%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-ember hover:bg-emberDark text-white text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all active:scale-95">
+          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.188.109-1.922-.125-.453-.141-1.031-.328-1.766-.656-3.109-1.344-5.125-4.484-5.281-4.688-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.625-.391.828-.391.203 0 .422.016.609.016.188 0 .453-.078.703.531.266.625.891 2.188.969 2.344.078.156.125.344.031.547-.094.203-.141.344-.297.516-.156.172-.328.391-.469.516-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.141.688-.078.188-.219.797-.922 1.016-1.234.219-.313.438-.266.734-.156.297.109 1.906.906 2.234 1.063.328.156.547.234.625.375.078.141.078.813-.172 1.516z"/>
+          </svg>
+          <span>WhatsApp Sipariş</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== 2. KOMPAKT SPLIT HERO ==================== -->
+    <section class="relative pt-8 pb-12 sm:pt-12 sm:pb-16 lg:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          
+          <!-- Sol Kolon: Değer Önerisi ve Hızlı Eylem -->
+          <div class="lg:col-span-6 space-y-5 reveal">
+            <!-- Google Puanı Rozeti -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-gold/25 shadow-sm">
+              <span class="text-gold text-sm leading-none" aria-hidden="true">★</span>
+              <span class="text-xs sm:text-sm font-semibold text-charcoal">4,9 Google Puanı</span>
+              <span class="text-charcoal/40 text-xs">•</span>
+              <span class="text-xs sm:text-sm text-charcoal/75">263 Yorum · Odunpazarı</span>
+            </div>
+
+            <!-- Ana Başlık -->
+            <h1 class="font-serif font-bold text-3xl sm:text-4xl lg:text-[2.85rem] leading-[1.15] text-charcoal tracking-tight">
+              Eski Usul Odunlu Kara Fırından <span class="text-ember italic">Sıcak Lezzetler</span>
+            </h1>
+
+            <!-- 2 Satırlık Öz Açıklama -->
+            <p class="text-base sm:text-[17px] leading-relaxed text-charcoal/75 max-w-xl">
+              Odun ateşinde çıtır pide, lahmacun ve Bursa usulü bol malzemeli cantık çeşitleri; taze salata ve meze ikramıyla Büyükdere'de sofranızda.
+            </p>
+
+            <!-- Eylem Butonları -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a href="#menu" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-charcoal hover:bg-espresso text-parchment font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+                <span>Menüyü İncele</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/905060336660?text=Merhaba%2C%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-sand border border-charcoal/15 text-charcoal font-semibold text-sm sm:text-base shadow-sm transition-all active:scale-[0.98]">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>WhatsApp ile Sipariş</span>
+              </a>
+            </div>
+
+            <!-- Kompakt Bilgi Şeridi -->
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 pt-3 border-t border-charcoal/10 text-xs sm:text-sm font-medium text-charcoal/75">
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-ember" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                21:15'e Kadar Açık
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-ember" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg>
+                Odunlu Kara Fırın
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                Vegan Seçenekler
+              </span>
+            </div>
+          </div>
+
+          <!-- Sağ Kolon: Gerçek Yemek Fotoğraflı Asimetrik Bento -->
+          <div class="lg:col-span-6 reveal" style="transition-delay: 100ms;">
+            <div class="relative max-w-xl mx-auto lg:ml-auto">
+              <!-- Ana Soğra Fotoğrafı (yunus emre-1.webp) -->
+              <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-espresso aspect-[4/3]">
+                <img
+                  src="yunus emre-1.webp"
+                  alt="Yunus Emre Pide Salonu çıtır pideler, taze salata, acılı ezme ve yoğurtlu meze sofrası"
+                  class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700"
+                  onerror="this.onerror=null; this.src='https://placehold.co/960x720/292524/FAF6F0?text=Yunus+Emre+Kara+F%C4%B1r%C4%B1n+Sofras%C4%B1';"
+                />
+                <!-- Hafif alt kontrast degrade -->
+                <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent pointer-events-none"></div>
+
+                <!-- Üst Sol Yüzen Rozet -->
+                <div class="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-charcoal/85 backdrop-blur-md text-parchment text-xs font-semibold border border-white/15 shadow-md">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                  Meze & Salata İkramlı
+                </div>
+
+                <!-- Alt Sol Kısa Bilgi -->
+                <div class="absolute bottom-3.5 left-4 right-32 text-parchment">
+                  <p class="text-xs font-medium text-parchment/80">Kişi başı ortalama</p>
+                  <p class="text-sm sm:text-base font-bold">₺200 – ₺400</p>
+                </div>
+              </div>
+
+              <!-- İkincil Yakın Plan Pide Kartı (yunus emre-2.webp) -->
+              <div class="relative -mt-12 sm:-mt-20 ml-auto mr-2 sm:-mr-3 w-44 sm:w-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-parchment bg-charcoal aspect-[4/3] group">
+                <img
+                  src="yunus emre-2.webp"
+                  alt="Odun ateşinde pişmiş köz biberli kıymalı kara fırın pide"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x450/1C1917/F59E0B?text=K%C4%B1ymal%C4%B1+Kara+F%C4%B1r%C4%B1n+Pide';"
+                />
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 to-transparent px-3 py-2">
+                  <span class="text-[11px] font-semibold text-parchment tracking-wide">Köz Biberli Kıymalı</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ETKİLEŞİMLİ KOMPAKT MENÜ ==================== -->
+    <section id="menu" class="py-12 sm:py-16 bg-sand/55 border-y border-charcoal/10">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- Başlık & Kısa Yönlendirme -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7 reveal">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-ember">Kara Fırın Menüsü</span>
+            <h2 class="font-serif font-bold text-2xl sm:text-3xl text-charcoal mt-1">Günün Sıcak Lezzetleri</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-charcoal/70 max-w-md">
+            Güncel menü ve paket sipariş için ürünleri seçip tek tıkla WhatsApp'tan gönderebilirsiniz. <span class="text-charcoal/55">(Taslak fiyatlardır)</span>
+          </p>
+        </div>
+
+        <!-- Kategori Sekmeleri -->
+        <div role="tablist" aria-label="Menü Kategorileri" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 mb-6 reveal">
+          <button type="button" data-category="featured" class="menu-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-charcoal text-parchment shadow-sm">
+            Öne Çıkanlar
+          </button>
+          <button type="button" data-category="pide" class="menu-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-charcoal/75 hover:text-charcoal border border-charcoal/10">
+            Pideler
+          </button>
+          <button type="button" data-category="cantik" class="menu-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-charcoal/75 hover:text-charcoal border border-charcoal/10">
+            Cantık & Lahmacun
+          </button>
+          <button type="button" data-category="menus" class="menu-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-charcoal/75 hover:text-charcoal border border-charcoal/10">
+            Menüler & Vegan
+          </button>
+          <button type="button" data-category="drinks" class="menu-tab shrink-0 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-charcoal/75 hover:text-charcoal border border-charcoal/10">
+            İçecekler
+          </button>
+        </div>
+
+        <!-- Menü Kartları Izgarası (JS ile Dinamik Doldurulur) -->
+        <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
+          <!-- Kartlar script tarafından üretilir -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TOPLU SİPARİŞ & GOOGLE YORUMLARI ==================== -->
+    <section id="toplu-siparis" class="py-12 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          
+          <!-- Sol (5 Kolon): Toplu Sipariş & Özel Günler Kartı -->
+          <div class="lg:col-span-5 reveal">
+            <div class="h-full rounded-3xl bg-charcoal text-parchment p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden border border-gold/25 ember-glow">
+              <!-- Dekoratif sıcak köşe ışıltısı -->
+              <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-ember/20 blur-3xl pointer-events-none"></div>
+
+              <div class="relative z-10">
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/20">
+                  Özel Günlerinizde Yanınızdayız
+                </span>
+
+                <h2 class="font-serif font-bold text-2xl sm:text-[1.75rem] leading-snug mt-4">
+                  Düğün, Mevlüt, Vefatiyye & Evlâdiyye Siparişleri
+                </h2>
+
+                <p class="text-sm sm:text-[15px] leading-relaxed text-parchment/80 mt-3.5">
+                  Kalabalık davetleriniz için pide ve cantık siparişleriniz eski usul kara fırınımızda zamanında, sıcak ve özenle hazırlanır. <strong class="text-parchment font-semibold">Toplu siparişlerde özel iskonto uygulanır.</strong>
+                </p>
+
+                <!-- Öne Çıkan Avantajlar -->
+                <ul class="mt-5 space-y-2 text-xs sm:text-sm text-parchment/85">
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    İstenilen saatte fırından sıcak teslimat
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    Adet bazlı özel toplu sipariş iskontosu
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                    Paketleme ve yanında ayran / meze opsiyonu
+                  </li>
+                </ul>
+              </div>
+
+              <div class="relative z-10 pt-6 mt-6 border-t border-white/10">
+                <a href="https://wa.me/905060336660?text=Merhaba%2C%20d%C3%BC%C4%9F%C3%BCn%2Fmevl%C3%BCt%20i%C3%A7in%20toplu%20pide%20ve%20cant%C4%B1k%20iskontolu%20fiyat%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-ember hover:bg-emberDark text-white text-sm font-semibold shadow-md transition-all active:scale-[0.98]">
+                  <span>Toplu Sipariş İçin İskontolu Fiyat Al</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ (7 Kolon): Gerçek Google Yorumları -->
+          <div id="yorumlar" class="lg:col-span-7 flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-ember">Google Misafir Yorumları</span>
+                <h2 class="font-serif font-bold text-2xl sm:text-3xl text-charcoal mt-0.5">Misafirlerimiz Ne Diyor?</h2>
+              </div>
+              <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white border border-charcoal/10 shadow-sm">
+                <span class="font-bold text-base text-charcoal">4,9</span>
+                <span class="text-gold text-sm tracking-tight" aria-label="5 üzerinden 4,9 yıldız">★★★★★</span>
+                <span class="text-xs font-medium text-charcoal/60">263 Yorum</span>
+              </div>
+            </div>
+
+            <!-- 3 Gerçek Yorum Kartı -->
+            <div class="space-y-3.5">
+              <!-- Yorum 1 -->
+              <article class="rounded-2xl bg-white p-5 border border-charcoal/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-ember/10 text-ember font-bold text-xs flex items-center justify-center">BE</div>
+                    <div>
+                      <h3 class="text-sm font-bold text-charcoal leading-none">Betül E.</h3>
+                      <span class="text-[11px] text-charcoal/55">Google Yorumu · 3 ay önce</span>
+                    </div>
+                  </div>
+                  <span class="text-gold text-xs font-semibold">★★★★★</span>
+                </div>
+                <p class="text-sm leading-relaxed text-charcoal/80">
+                  "Dün akşam yemeği için gittik. 3 cantıklı menüyü söyledik, salata, ayran ve meze ile birlikte geldi. Çok lezzetliydi. Mekan sahibi bizle güler yüzle ilgilendi."
+                </p>
+              </article>
+
+              <!-- Yorum 2 -->
+              <article class="rounded-2xl bg-white p-5 border border-charcoal/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-charcoal/10 text-charcoal font-bold text-xs flex items-center justify-center">AU</div>
+                    <div>
+                      <h3 class="text-sm font-bold text-charcoal leading-none">Aybars Uçak</h3>
+                      <span class="text-[11px] text-charcoal/55">Google Yorumu · 1 ay önce</span>
+                    </div>
+                  </div>
+                  <span class="text-gold text-xs font-semibold">★★★★★</span>
+                </div>
+                <p class="text-sm leading-relaxed text-charcoal/80">
+                  "Son zamanlarda yediğim en lezzetli pideydi, sayamayacağınız kadar çeşit var ve fiyatlar çok uygun. Özellikle Burak Usta'ya ilgisi ve saygısı için teşekkürler."
+                </p>
+              </article>
+
+              <!-- Yorum 3 -->
+              <article class="rounded-2xl bg-white p-5 border border-charcoal/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-gold/15 text-amber-800 font-bold text-xs flex items-center justify-center">Z</div>
+                    <div>
+                      <h3 class="text-sm font-bold text-charcoal leading-none">Zülal</h3>
+                      <span class="text-[11px] text-charcoal/55">Google Yorumu · 2 ay önce</span>
+                    </div>
+                  </div>
+                  <span class="text-gold text-xs font-semibold">★★★★★</span>
+                </div>
+                <p class="text-sm leading-relaxed text-charcoal/80">
+                  "Çok samimi bir mekan, çalışanlar ilgili. Biz lahmacun söyledik. Tadı ve boyutu gayet iyiydi, hızlı geldi. Güvenle tercih edebilirsiniz."
+                </p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 5. KOMPAKT İLETİŞİM & ULAŞIM FOOTER ==================== -->
+  <footer id="iletisim" class="bg-charcoal text-parchment border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Kolon 1: Adres & Harita -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="font-serif font-bold text-lg text-parchment">Yunus Emre Pide Salonu</span>
+          </div>
+          <p class="text-sm text-parchment/75 leading-relaxed">
+            Büyükdere, Altınçağ Sk. No:20/A<br />
+            26040 Odunpazarı / Eskişehir
+          </p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yunus+Emre+Pide+Lahmacun+Cantik+Salonu+Buyukdere+Odunpazari+Eskisehir" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-ember text-parchment text-xs sm:text-sm font-semibold transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Google Haritalar'da Aç / Yol Tarifi
+          </a>
+        </div>
+
+        <!-- Kolon 2: Çalışma Saatleri ve Canlı Açık/Kapalı Durumu -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-gold">Çalışma Saatleri</h3>
+          <div class="flex items-center gap-2.5">
+            <span id="live-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Şu An Açık
+            </span>
+          </div>
+          <p class="text-sm text-parchment/85 font-medium">Her Gün Açık · Kapanış 21:15</p>
+          <p class="text-xs text-parchment/60 leading-relaxed">
+            Açık büfe salata, taze meze ikramı ve vegan seçeneklerimizle hizmetinizdeyiz.
+          </p>
+        </div>
+
+        <!-- Kolon 3: Doğrudan İletişim -->
+        <div class="space-y-3">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-gold">Sipariş & İletişim</h3>
+          <a href="tel:+905060336660" class="block text-xl font-bold text-parchment hover:text-gold transition-colors tracking-tight">
+            0506 033 66 60
+          </a>
+          <div class="flex flex-wrap items-center gap-2.5 pt-1">
+            <a href="https://wa.me/905060336660?text=Merhaba%2C%20Yunus%20Emre%20Pide%27den%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors">
+              WhatsApp
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-parchment text-xs font-semibold transition-colors">
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alt Telif & Taslak Notu -->
+      <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-parchment/55">
+        <p>© 2026 Yunus Emre Pide Lahmacun Cantık Salonu</p>
+        <p>Tasarım Taslağı: <a href="https://kovanweb.com" target="_blank" rel="noopener noreferrer" class="text-parchment/80 hover:text-gold font-semibold transition-colors">KovanWeb</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== YÜZEN HIZLI WHATSAPP SİPARİŞ TEPSİSİ ==================== -->
+  <div id="order-tray" class="fixed left-1/2 -translate-x-1/2 bottom-[74px] md:bottom-6 z-50 w-[calc(100%-1.5rem)] max-w-xl transform translate-y-28 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="rounded-2xl bg-charcoal text-parchment p-3 sm:p-3.5 shadow-2xl border border-gold/30 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-10 h-10 rounded-xl bg-ember text-white font-bold text-sm flex items-center justify-center shrink-0" id="tray-count">0</div>
+        <div class="min-w-0">
+          <p class="text-[11px] text-parchment/70 truncate" id="tray-summary">Seçilen ürünler</p>
+          <p class="text-sm sm:text-base font-bold text-parchment" id="tray-total">0 ₺</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button type="button" id="clear-tray-btn" class="px-2.5 py-2 rounded-xl text-xs font-medium text-parchment/70 hover:text-white hover:bg-white/10 transition-colors" title="Listeyi Temizle">
+          Temizle
+        </button>
+        <a id="send-whatsapp-order" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow-sm transition-colors">
+          <span>WhatsApp'tan Gönder</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MOBİL SABİT ALT EYLEM ÇUBUĞU ==================== -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-parchment/95 backdrop-blur-md border-t border-charcoal/15 px-3 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+    <div class="grid grid-cols-3 gap-2">
+      <a href="tel:+905060336660" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white border border-charcoal/10 text-charcoal text-xs font-bold active:scale-95 transition-transform">
+        <svg class="w-4 h-4 text-ember" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Ara
+      </a>
+      <a href="https://wa.me/905060336660?text=Merhaba%2C%20Yunus%20Emre%20Pide%27den%20sipari%C5%9F%20vermek%20istiyorum." target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-ember text-white text-xs font-bold shadow-sm active:scale-95 transition-transform">
+        WhatsApp
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Yunus+Emre+Pide+Lahmacun+Cantik+Salonu+Buyukdere+Odunpazari+Eskisehir" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-charcoal text-parchment text-xs font-bold active:scale-95 transition-transform">
+        Yol Tarifi
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== ETKİLEŞİM & ANİMASYON SCRIPTİ ==================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------------------------------------------------
+       * 1. MENÜ VERİLERİ (Restoran Profili & Yorumlara Göre)
+       * --------------------------------------------------- */
+      const MENU_ITEMS = [
+        {
+          id: 'cantik-menu',
+          name: '3 Cantıklı Ziyafet Menüsü',
+          desc: 'Sıcak 3 adet cantık, taze mevsim salata, meze ve yayık ayran dahil.',
+          price: 290,
+          categories: ['featured', 'menus', 'cantik'],
+          badge: 'En Çok Tercih Edilen',
+          badgeStyle: 'bg-ember/10 text-ember border-ember/20',
+        },
+        {
+          id: 'kiymali-pide',
+          name: 'Kıymalı Kara Fırın Pide',
+          desc: 'Odun ateşinde çıtır kenar, közlenmiş yeşil biber ve taze salata eşliğinde.',
+          price: 240,
+          categories: ['featured', 'pide'],
+          badge: 'Kara Fırın',
+          badgeStyle: 'bg-amber-500/15 text-amber-900 border-amber-500/25',
+        },
+        {
+          id: 'kusbasili-kasarli',
+          name: 'Kuşbaşılı Kaşarlı Pide',
+          desc: 'İnce açılmış hamur, lokum dana kuşbaşı, taze domates ve eriyen kaşar.',
+          price: 290,
+          categories: ['featured', 'pide'],
+          badge: 'Usta Tavsiyesi',
+          badgeStyle: 'bg-charcoal/10 text-charcoal border-charcoal/15',
+        },
+        {
+          id: 'karisik-pide',
+          name: 'Karışık Özel Pide',
+          desc: 'Kıyma, dana kuşbaşı, taze kaşar ve kasap sucuğu tek pidede bir arada.',
+          price: 310,
+          categories: ['featured', 'pide'],
+          badge: 'Bol Malzemeli',
+          badgeStyle: 'bg-amber-500/15 text-amber-900 border-amber-500/25',
+        },
+        {
+          id: 'kasarli-pide',
+          name: 'Kaşarlı Pide',
+          desc: 'Bol eriyen taze kaşar peyniri, kara fırında kızarmış çıtır hamur.',
+          price: 210,
+          categories: ['pide'],
+          badge: '',
+          badgeStyle: '',
+        },
+        {
+          id: 'lahmacun',
+          name: 'Odun Ateşi Lahmacun',
+          desc: 'İncecik çıtır hamur, özel baharatlı harç, bol yeşillik ve limon ile.',
+          price: 110,
+          categories: ['featured', 'cantik'],
+          badge: 'Çıtır & Hızlı',
+          badgeStyle: 'bg-ember/10 text-ember border-ember/20',
+        },
+        {
+          id: 'kiymali-cantik',
+          name: 'Kıymalı Cantık',
+          desc: 'Bursa usulü yumuşak puf hamur üzerine bol zırh kıymalı sıcak harç.',
+          price: 100,
+          categories: ['cantik'],
+          badge: 'Kara Fırın',
+          badgeStyle: 'bg-amber-500/15 text-amber-900 border-amber-500/25',
+        },
+        {
+          id: 'kusbasili-cantik',
+          name: 'Kuşbaşılı Cantık',
+          desc: 'Özel dinlendirilmiş dana kuşbaşı, biber ve domatesli dolgun cantık.',
+          price: 120,
+          categories: ['cantik'],
+          badge: '',
+          badgeStyle: '',
+        },
+        {
+          id: 'vegan-pide',
+          name: 'Sebzeli & Mantarlı Vegan Pide',
+          desc: 'Taze köy biberi, domates, kültür mantarı ve zeytinyağlı özel fırın sosu.',
+          price: 220,
+          categories: ['featured', 'menus', 'pide'],
+          badge: 'Vegan',
+          badgeStyle: 'bg-emerald-600/10 text-emerald-800 border-emerald-600/25',
+        },
+        {
+          id: 'yayik-ayran',
+          name: 'Yayık Ayran',
+          desc: 'Pide ve cantık yanına buz gibi köpüklü geleneksel ayran.',
+          price: 45,
+          categories: ['drinks'],
+          badge: '',
+          badgeStyle: '',
+        },
+        {
+          id: 'salgam',
+          name: 'Şalgam Suyu',
+          desc: 'Acılı veya acısız seçenekleriyle soğuk servis.',
+          price: 50,
+          categories: ['drinks'],
+          badge: '',
+          badgeStyle: '',
+        },
+        {
+          id: 'kutu-icecek',
+          name: 'Kutu İçecekler',
+          desc: 'Kola, Fanta, Fuse Tea veya soğuk soda çeşitleri.',
+          price: 60,
+          categories: ['drinks'],
+          badge: '',
+          badgeStyle: '',
+        },
+      ];
+
+      /* Sepet durumu: { [itemId]: quantity } */
+      const cart = {};
+      let activeCategory = 'featured';
+
+      const menuGrid = document.getElementById('menu-grid');
+      const tabButtons = document.querySelectorAll('.menu-tab');
+      const orderTray = document.getElementById('order-tray');
+      const trayCount = document.getElementById('tray-count');
+      const traySummary = document.getElementById('tray-summary');
+      const trayTotal = document.getElementById('tray-total');
+      const sendWhatsappOrder = document.getElementById('send-whatsapp-order');
+      const clearTrayBtn = document.getElementById('clear-tray-btn');
+
+      /* ---------------------------------------------------
+       * 2. MENÜ KARTLARINI RENDER ETME
+       * --------------------------------------------------- */
+      function renderMenu() {
+        if (!menuGrid) return;
+
+        const filtered = MENU_ITEMS.filter((item) => item.categories.includes(activeCategory));
+
+        menuGrid.innerHTML = filtered
+          .map((item, idx) => {
+            const qty = cart[item.id] || 0;
+            const badgeHtml = item.badge
+              ? `<span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold border ${item.badgeStyle}">${item.badge}</span>`
+              : '';
+
+            const actionHtml =
+              qty === 0
+                ? `<button type="button" data-action="add" data-id="${item.id}" class="px-3 py-1.5 rounded-xl bg-parchment hover:bg-ember text-charcoal hover:text-white border border-charcoal/15 hover:border-ember text-xs font-bold transition-colors active:scale-95">
+                    + Ekle
+                   </button>`
+                : `<div class="inline-flex items-center gap-1.5 bg-charcoal text-parchment rounded-xl p-1">
+                    <button type="button" data-action="dec" data-id="${item.id}" class="w-6 h-6 rounded-lg hover:bg-white/15 flex items-center justify-center font-bold text-sm transition-colors" aria-label="Azalt">−</button>
+                    <span class="min-w-[1.25rem] text-center text-xs font-bold">${qty}</span>
+                    <button type="button" data-action="inc" data-id="${item.id}" class="w-6 h-6 rounded-lg bg-ember hover:bg-emberDark flex items-center justify-center font-bold text-sm transition-colors" aria-label="Artır">+</button>
+                   </div>`;
+
+            return `
+              <div class="menu-card-enter rounded-2xl bg-white p-4 sm:p-5 border border-charcoal/10 hover:border-ember/35 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col justify-between gap-3" style="animation-delay: ${idx * 40}ms">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="space-y-1">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <h3 class="font-bold text-[15px] sm:text-base text-charcoal">${item.name}</h3>
+                      ${badgeHtml}
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-charcoal/65 leading-relaxed">${item.desc}</p>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between pt-2 border-t border-charcoal/5">
+                  <span class="font-serif font-bold text-lg text-ember">${item.price} ₺</span>
+                  ${actionHtml}
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      /* ---------------------------------------------------
+       * 3. SEPET VE WHATSAPP MESAJI GÜNCELLEME
+       * --------------------------------------------------- */
+      function updateOrderTray() {
+        let totalItems = 0;
+        let totalPrice = 0;
+        const lines = [];
+
+        MENU_ITEMS.forEach((item) => {
+          const q = cart[item.id] || 0;
+          if (q > 0) {
+            totalItems += q;
+            totalPrice += q * item.price;
+            lines.push(`• ${q}x ${item.name} (${q * item.price} ₺)`);
+          }
+        });
+
+        if (totalItems > 0) {
+          trayCount.textContent = String(totalItems);
+          trayTotal.textContent = `${totalPrice.toLocaleString('tr-TR')} ₺`;
+          traySummary.textContent = `${totalItems} ürün seçildi · Tahmini tutar`;
+
+          const message =
+            `Merhaba Yunus Emre Pide, web sitenizden sipariş vermek istiyorum:\n\n` +
+            lines.join('\n') +
+            `\n\nTahmini Toplam: ${totalPrice.toLocaleString('tr-TR')} ₺\nAdres / Teslimat Notu: `;
+
+          sendWhatsappOrder.href = `https://wa.me/905060336660?text=${encodeURIComponent(message)}`;
+
+          orderTray.classList.remove('translate-y-28', 'opacity-0', 'pointer-events-none');
+          orderTray.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        } else {
+          orderTray.classList.add('translate-y-28', 'opacity-0', 'pointer-events-none');
+          orderTray.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        }
+      }
+
+      /* Menü kart butonları (Event Delegation) */
+      menuGrid.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-action]');
+        if (!btn) return;
+        const { action, id } = btn.dataset;
+
+        if (action === 'add' || action === 'inc') {
+          cart[id] = (cart[id] || 0) + 1;
+        } else if (action === 'dec') {
+          cart[id] = Math.max(0, (cart[id] || 0) - 1);
+          if (cart[id] === 0) delete cart[id];
+        }
+
+        renderMenu();
+        updateOrderTray();
+      });
+
+      /* Sepeti temizle */
+      clearTrayBtn.addEventListener('click', () => {
+        Object.keys(cart).forEach((k) => delete cart[k]);
+        renderMenu();
+        updateOrderTray();
+      });
+
+      /* Kategori Sekme Değişimi */
+      tabButtons.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          activeCategory = tab.dataset.category;
+
+          tabButtons.forEach((b) => {
+            b.classList.remove('bg-charcoal', 'text-parchment', 'shadow-sm');
+            b.classList.add('bg-white', 'text-charcoal/75', 'border', 'border-charcoal/10');
+          });
+
+          tab.classList.add('bg-charcoal', 'text-parchment', 'shadow-sm');
+          tab.classList.remove('bg-white', 'text-charcoal/75', 'border', 'border-charcoal/10');
+
+          renderMenu();
+        });
+      });
+
+      /* ---------------------------------------------------
+       * 4. CANLI AÇIK / KAPALI SAAT KONTROLÜ (10:00 - 21:15)
+       * --------------------------------------------------- */
+      function updateOpenStatus() {
+        const badge = document.getElementById('live-status-badge');
+        if (!badge) return;
+
+        try {
+          const now = new Date();
+          const minutesNow = now.getHours() * 60 + now.getMinutes();
+          const openMin = 10 * 60;      // 10:00
+          const closeMin = 21 * 60 + 15; // 21:15
+
+          if (minutesNow >= openMin && minutesNow <= closeMin) {
+            badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30';
+            badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Şu An Açık · 21:15\'e Kadar';
+          } else {
+            badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30';
+            badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Şu An Kapalı · Yarın 10:00\'da Açık';
+          }
+        } catch (err) {
+          // Varsayılan etiket korunur
+        }
+      }
+
+      /* ---------------------------------------------------
+       * 5. SCROLL-REVEAL & NAVBAR GÖLGE ANİMASYONU
+       * --------------------------------------------------- */
+      function initObservers() {
+        const reveals = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+          );
+          reveals.forEach((el) => observer.observe(el));
+        } else {
+          reveals.forEach((el) => el.classList.add('visible'));
+        }
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (window.scrollY > 12) {
+              navbar.classList.add('shadow-sm');
+            } else {
+              navbar.classList.remove('shadow-sm');
+            }
+          },
+          { passive: true }
+        );
+      }
+
+      // İlk yükleme
+      renderMenu();
+      updateOpenStatus();
+      initObservers();
+    })();
+  </script>
+</body>
+</html>
